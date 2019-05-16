@@ -5,5 +5,5 @@ module.exports = sequelize.define('school', {
   name: { type: Sequelize.STRING, allowNull: false },
   city: { type: Sequelize.STRING },
   // description: {type: Sequelize.STRING},
-  userId: { type: Sequelize.BIGINT, allowNull: false, onDelete: 'CASCADE', onUpdate: 'CASCADE' },
+  user_id: { type: Sequelize.BIGINT, allowNull: false, onDelete: 'CASCADE', onUpdate: 'CASCADE' },
 });
