@@ -8,7 +8,7 @@ const  {jwtCheck} = require('../../auth/Express-jwt.js');
 // we need the "get" function from lodash
 const _ = require('lodash');
 
-router.get('/schools/houses/data', async function(req,res,next){
+router.get('/schools/houses/data', jwtCheck, async function(req,res,next){
       try {
 
           const user = await User.findOne({

@@ -102,7 +102,7 @@ router.post('/', jwtCheck, async function(req, res) {
 // the ensureOwner middleware gives us the school and user object from the db so we
 // don't have to make the queries in this function
 // async function for await usage
-router.put('/:id', jwtCheck, async (req, res, next) => {
+router.put('/:id', jwtCheck, (req, res, next) => {
          // wrap the code in try..catch block to catch any errors
   // try {
   //      // every sequelize model has a handy update method which accepts an object
