@@ -10,7 +10,7 @@ async function ensureOwner(req, res, next) {
   // get the user object from database by matching  the auth token
   const user = await User.findOne({
     where: {
-      userId: req.user.sub
+      user_id: req.user.sub
     },
   })
    
@@ -21,10 +21,10 @@ async function ensureOwner(req, res, next) {
   // the ID may be invalid i.e. no school exists with that ID, send a 404 in that case
   if (!school) return next({ code: 404 })
 
-  // now we can compare if the school's userId property is the same as the logged in user's id
+  // now we can compare if the school's user_id property is the same as the logged in user's id
   // if it matches then they are good to go, otherwise send a 403 - forbidden
   // coerce the ids into Numbers just to avoid any gotchas
-  if (Number(school.userId) === Number(user.id)) {
+  if (Number(school.user_id) === Number(user.id)) {
     // while we are at it, lets also make it easy for the next middleware to process this transaction
     // we already made the db query to fetch the school and user lets put those 2 objects on the
     // req object so that the next handler function can directly access them without having to
@@ -82,7 +82,7 @@ router.post('/', jwtCheck, async function(req, res) {
               
             const newSchool = await School.create({
                           ...req.body,
-                          userId: user.id,
+                          user_id: user.id,
                         })
 
               res.status(201).json({
@@ -119,7 +119,7 @@ router.put('/:id', jwtCheck, async (req, res, next) => {
     {
       name: req.body.name,
       city: req.body.city,
-      userId: req.body.userId
+      user_id: req.body.user_id
     },
     { where: { id: req.params.id} }
   )

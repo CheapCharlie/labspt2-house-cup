@@ -7,23 +7,23 @@ const { User, School, House } = require('../Models');
 const sequelize = require('../sequelize');
 
 School.belongsTo(User, {
-  foreignKey: 'userId',
+  foreignKey: 'user_id',
   onDelete: 'CASCADE',
   onUpdate: 'CASCADE'
 });
 User.hasMany(School, {
-  foreignKey: 'userId',
+  foreignKey: 'user_id',
   onDelete: 'CASCADE',
   onUpdate: 'CASCADE'
 });
 
 House.belongsTo(School, {
-  foreignKey: 'schoolId',
+  foreignKey: 'school_id',
   onDelete: 'CASCADE',
   onUpdate: 'CASCADE'
 });
 School.hasMany(House, {
-  foreignKey: 'schoolId',
+  foreignKey: 'school_id',
   onDelete: 'CASCADE',
   onUpdate: 'CASCADE'
 });

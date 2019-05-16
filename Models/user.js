@@ -8,10 +8,17 @@ module.exports = sequelize.define('users', {
   email: { type: Sequelize.STRING, allowNull: true },
   // password: { type: Sequelize.STRING, allowNull: false },
   is_admin: { type: Sequelize.BOOLEAN, allowNull: false, defaultValue: true },
-});
+},
+{
+  timestamps: false,
+  underscored: true,
+  sequelize: sequelize
+}
+);
 
 /*
   knex('users').select('firstName')
 
   users = User.findAll()
 */
+

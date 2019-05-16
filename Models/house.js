@@ -6,4 +6,10 @@ module.exports = sequelize.define('house', {
   color: { type: Sequelize.STRING },
   school_id: { type: Sequelize.BIGINT, },
   points: { type: Sequelize.INTEGER, defaultValue: 0 },
-});
+},
+{
+  timestamps: false,
+  underscored: true,
+  sequelize: sequelize
+}
+);

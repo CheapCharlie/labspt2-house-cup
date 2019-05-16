@@ -19,7 +19,7 @@ router.get('/schools/houses/data', async function(req,res,next){
                 //  console.log(`Houses line 19`, user.id)
           const school = await School.findOne({
                     where: {
-                      userId: user.id,
+                      user_id: user.id,
                     }
                });  
               //  console.log(`houses`, school)
@@ -102,7 +102,7 @@ router.post('/schools/:id/houses', jwtCheck, async function(req, res, next) {
     });
 
     // check if this user is the owner of the school, we will only allow the owners to add houses
-    if (Number(school.userId) !== Number(user.id)) {
+    if (Number(school.user_id) !== Number(user.id)) {
       return res.status(403).json({
         message: 'You are not authorized to make changes to this school. ',
       });
@@ -110,7 +110,7 @@ router.post('/schools/:id/houses', jwtCheck, async function(req, res, next) {
     // if it gets here then the user is good, lets create the house
     // here we make use of the special function sequelize has created for us,
     // this is possible because earlier we made the associations saying schools have many houses
-    // calling this function will automatically populate the schoolId field in the houses table for us
+    // calling this function will automatically populate the school_id field in the houses table for us
     const newHouse = await school.createHouse(req.body);
 
     res.json(newHouse);
@@ -122,7 +122,7 @@ router.post('/schools/:id/houses', jwtCheck, async function(req, res, next) {
     //   defaults: {
     //     name: req.body.name,
     //     color: req.body.color,
-    //     schoolId: req.body.schoolId
+    //     school_id: req.body.school_id
     //   }
     // });
     // return res.json({

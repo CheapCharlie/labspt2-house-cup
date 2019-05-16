@@ -67,14 +67,14 @@ router.post( "/register",
   (req, res) => {
     console.log(`Line 64`, req.user)
     req.body.user_id = req.user.sub;    
-    const userId = req.body.user_id;
+    const user_id = req.body.user_id;
     const userObj = req.body;
-    User.findOne({ where: { user_id: userId } })
+    User.findOne({ where: { user_id: user_id } })
     .then(user => {
       if (user) {
         res
           .status(400)
-          .json({ msg: `User with user_id ${userId} already registered.` });
+          .json({ msg: `User with user_id ${user_id} already registered.` });
           console.log(`User already registered`)
       } else {
         req.user = user;

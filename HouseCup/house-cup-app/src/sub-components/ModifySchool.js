@@ -57,7 +57,7 @@ class ModifySchoolPage extends React.Component {
         const updatedSchool = {
             name: this.state.newName,
             city: this.state.newCity,
-            userId: id
+            user_id: id
         }
         axios.put(`http://localhost:5000/schools/${id}`, updatedSchool, { headers })
             .then(response => {

@@ -6,4 +6,10 @@ module.exports = sequelize.define('school', {
   city: { type: Sequelize.STRING },
   // description: {type: Sequelize.STRING},
   user_id: { type: Sequelize.BIGINT, allowNull: false, onDelete: 'CASCADE', onUpdate: 'CASCADE' },
-});
+},
+{
+  timestamps: false,
+  underscored: true,
+  sequelize: sequelize
+}
+);
