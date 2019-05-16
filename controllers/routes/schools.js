@@ -38,7 +38,7 @@ async function ensureOwner(req, res, next) {
   return next({ code: 403 })
 }
 
-router.get('/', async function(req, res) {
+router.get('/', jwtCheck,  async function(req, res) {
   try {
     const schools = await School.findAll({
       include: [{ model: User, attributes:["user_id"] }, House],
