@@ -38,7 +38,7 @@ async function ensureOwner(req, res, next) {
   return next({ code: 403 })
 }
 
-router.get('/', jwtCheck,  async function(req, res) {
+router.get('/',  async function(req, res) {
   try {
     const schools = await School.findAll({
       include: [{ model: User, attributes:["user_id"] }, House],
@@ -56,7 +56,7 @@ router.get('/', jwtCheck,  async function(req, res) {
   }
 })
 
-router.get('/:id', async function(req, res) {
+router.get('/:id', jwtCheck, async function(req, res) {
   try {
     const school = await School.findByPk(req.params.id)
     res.json({
@@ -71,7 +71,7 @@ router.get('/:id', async function(req, res) {
   }
 })
 
-router.post('/', jwtCheck, async function(req, res) {
+router.post('/', async function(req, res) {
     console.log(`Line 75:`,req.user);
   try {
       const user = await User.findOne({

@@ -8,7 +8,7 @@ const  {jwtCheck} = require('../../auth/Express-jwt.js');
 // we need the "get" function from lodash
 const _ = require('lodash');
 
-router.get('/schools/houses/data', jwtCheck, async function(req,res,next){
+router.get('/schools/houses/data', async function(req,res,next){
       try {
 
           const user = await User.findOne({
@@ -35,7 +35,7 @@ router.get('/schools/houses/data', jwtCheck, async function(req,res,next){
 // get all houses for a particular school
 // remember we have a hidden "id" parameter in this url, we don't see it here because it is a nested route
 // this is why we needed mergeParams set on the express Router
-router.get('/schools/:id/houses', async function(req, res, next) {
+router.get('/schools/:id/houses', jwtCheck, async function(req, res, next) {
   try {
     // find the school referenced by the ID
     console.log(`Line number 18`, req.params.id)
@@ -60,7 +60,7 @@ router.get('/schools/:id/houses', async function(req, res, next) {
   }
 });
 // get details of just one house in a school
-router.get('schools/:id/houses/:houseId', async function(req, res) {
+router.get('schools/:id/houses/:houseId', jwtCheck, async function(req, res) {
   // first find the house by primary key, while getting the house let's also
   // include the school and the owner details for convenience
   const house = await House.findByPk(req.params.houseId, {

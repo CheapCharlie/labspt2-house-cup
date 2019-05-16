@@ -42,7 +42,7 @@ router.get("/", (req, res, next) => {
     });
 });
 
-router.get("/:id", (req, res) => {
+router.get("/:id", jwtCheck, (req, res) => {
   const { id } = req.body;
   Users.findById(id)
     .then(user => {
@@ -63,7 +63,6 @@ router.get("/:id", (req, res) => {
 });
 
 router.post( "/register",
-  jwtCheck,
   (req, res) => {
     console.log(`Line 64`, req.user)
     req.body.user_id = req.user.sub;    
