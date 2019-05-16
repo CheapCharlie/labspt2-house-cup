@@ -2,6 +2,7 @@ const Sequelize = require('sequelize');
 const sequelize = require('../sequelize');
 
 module.exports = sequelize.define('school', {
+  id: {type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true},
   name: { type: Sequelize.STRING, allowNull: false },
   city: { type: Sequelize.STRING },
   // description: {type: Sequelize.STRING},
