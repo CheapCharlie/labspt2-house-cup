@@ -56,7 +56,7 @@ router.get('/',  async function(req, res) {
   }
 })
 
-router.get('/:id', jwtCheck, async function(req, res) {
+router.get('/:id', async function(req, res) {
   try {
     const school = await School.findByPk(req.params.id)
     res.json({
@@ -102,7 +102,7 @@ router.post('/', async function(req, res) {
 // the ensureOwner middleware gives us the school and user object from the db so we
 // don't have to make the queries in this function
 // async function for await usage
-router.put('/:id', jwtCheck, (req, res, next) => {
+router.put('/:id', (req, res, next) => {
          // wrap the code in try..catch block to catch any errors
   // try {
   //      // every sequelize model has a handy update method which accepts an object
@@ -137,7 +137,7 @@ router.put('/:id', jwtCheck, (req, res, next) => {
 // Delete a particular school
 // middleware setup same as above - protectEndPoint and then ensureOwner
 
-router.delete('/:id', jwtCheck, (req, res, next) => {
+router.delete('/:id', (req, res, next) => {
   
   School.destroy({
     where: { id: req.params.id }

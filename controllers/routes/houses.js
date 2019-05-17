@@ -35,7 +35,7 @@ router.get('/schools/houses/data', async function(req,res,next){
 // get all houses for a particular school
 // remember we have a hidden "id" parameter in this url, we don't see it here because it is a nested route
 // this is why we needed mergeParams set on the express Router
-router.get('/schools/:id/houses', jwtCheck, async function(req, res, next) {
+router.get('/schools/:id/houses', async function(req, res, next) {
   try {
     // find the school referenced by the ID
     console.log(`Line number 18`, req.params.id)
@@ -60,7 +60,7 @@ router.get('/schools/:id/houses', jwtCheck, async function(req, res, next) {
   }
 });
 // get details of just one house in a school
-router.get('schools/:id/houses/:houseId', jwtCheck, async function(req, res) {
+router.get('schools/:id/houses/:houseId', async function(req, res) {
   // first find the house by primary key, while getting the house let's also
   // include the school and the owner details for convenience
   const house = await House.findByPk(req.params.houseId, {
@@ -86,7 +86,7 @@ router.get('schools/:id/houses/:houseId', jwtCheck, async function(req, res) {
 
 // create a new house in that particular school
 // again, we have the hidden "id" parameter from the parent route
-router.post('/schools/:id/houses', jwtCheck, async function(req, res, next) {
+router.post('/schools/:id/houses', async function(req, res, next) {
   try {
     // find the school by primary key using the forwared "id" magic parameter
     const school = await School.findByPk(req.params.id);
@@ -141,7 +141,7 @@ router.post('/schools/:id/houses', jwtCheck, async function(req, res, next) {
 // even though the house ID is globally unique, we still need the user to specify the school Id and the house ID
 // in the URL for uniformity
 // again we have the hidden "id" paramater available to us
-router.put('/:houseId', jwtCheck , async function(req, res, next) {
+router.put('/:houseId', async function(req, res, next) {
   // find the particular house with the primary key
   const house = await House.findByPk(req.params.houseId, {
     include: [
@@ -187,7 +187,7 @@ router.put('/:houseId', jwtCheck , async function(req, res, next) {
 
 // delete a particular house from a school
 // again hidden "id" parameter is available for us to query the school
-router.delete('/:houseId',jwtCheck, async function(req, res, next) {
+router.delete('/:houseId', async function(req, res, next) {
   // find the house by primary key
   const house = await House.findByPk(req.params.houseId, {
     include: [
