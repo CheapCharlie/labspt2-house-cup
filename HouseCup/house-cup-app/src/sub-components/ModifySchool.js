@@ -17,7 +17,7 @@ class ModifySchoolPage extends React.Component {
     componentDidMount(){
         const id = this.props.match.params.id;
         // console.log(id);
-        axios.get(`http://localhost:5000/schools/${id}`)
+        axios.get(`https://labspt2-housecup.herokuapp.com/schools/${id}`)
             .then(response => {
                 this.setState({school: response.data.data.school})
                 // this.setState({name: response.data.data.school.name })
@@ -35,7 +35,7 @@ class ModifySchoolPage extends React.Component {
         const id = this.props.match.params.id;
         console.log(id);
         console.log(headers);
-        axios.delete(`http://localhost:5000/schools/${id}`, {headers})
+        axios.delete(`https://labspt2-housecup.herokuapp.com/schools/${id}`, {headers})
             .then(response => {
                 console.log('success', response)
                 this.props.history.goBack();
@@ -59,7 +59,7 @@ class ModifySchoolPage extends React.Component {
             city: this.state.newCity,
             user_id: id
         }
-        axios.put(`http://localhost:5000/schools/${id}`, updatedSchool, { headers })
+        axios.put(`https://labspt2-housecup.herokuapp.com/schools/${id}`, updatedSchool, { headers })
             .then(response => {
                 console.log('success! front end request: updateSchool', response)
                 this.props.history.goBack();

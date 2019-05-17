@@ -29,7 +29,7 @@ class Houses extends React.Component {
     }
 
  componentDidMount() {
-    axios.get(`http://localhost:5000/schools/${this.props.match.params.id}/houses`)
+    axios.get(`https://labspt2-housecup.herokuapp.com/schools/${this.props.match.params.id}/houses`)
         .then(response => { 
             if(response) {
             this.setState({  houseList: response.data  });
@@ -55,7 +55,7 @@ class Houses extends React.Component {
         }
 
         if (newHouse) {
-            axios.post(`http://localhost:5000/schools/${this.props.match.params.id}/houses`,
+            axios.post(`https://labspt2-housecup.herokuapp.com/schools/${this.props.match.params.id}/houses`,
                 newHouse, { headers })
                 .then(house => {
                     console.log(`Line 48 house from db`, house.data);

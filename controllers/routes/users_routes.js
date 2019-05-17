@@ -16,7 +16,7 @@ const {jwtCheck} = require('../../auth/Express-jwt');
 
 
 
-router.get("/", (req, res, next) => {
+router.get("/", jwtCheck, (req, res, next) => {
   // getTokenFromAuth0();
   User.findAll({
     // include: [{ model: School, include: [House]}],
@@ -62,7 +62,7 @@ router.get("/:id", jwtCheck, (req, res) => {
     });
 });
 
-router.post( "/register",
+router.post( "/register", jwtCheck,
   (req, res) => {
     console.log(`Line 64`, req.user)
     req.body.user_id = req.user.sub;    

@@ -20,7 +20,7 @@ class SchoolsPage extends Component {
         }
     }
     componentDidMount() {
-        axios.get('http://localhost:5000/schools')
+        axios.get('https://labspt2-housecup.herokuapp.com/schools')
             .then(response => {
                 if (response) {
                     // console.log(response.data.data.schools)
@@ -34,7 +34,7 @@ class SchoolsPage extends Component {
 
     }
     // addUser = e => {
-    //     axios.post('http://localhost:5000/users/register', {
+    //     axios.post('https://labspt2-housecup.herokuapp.com/users/register', {
     //         email: this.state.authProfile.email,
     //         password: this.state.authPassword,
     //     })
@@ -58,7 +58,7 @@ class SchoolsPage extends Component {
            
             if(newSchool) {
             const headers = { Authorization: `Bearer ${getAccessToken()}` };    
-            axios.post('http://localhost:5000/schools', newSchool, {headers} )
+            axios.post('https://labspt2-housecup.herokuapp.com/schools', newSchool, {headers} )
                  .then( school => {
                         let newSchool = school.data.data.newSchool;
                         this.setState({

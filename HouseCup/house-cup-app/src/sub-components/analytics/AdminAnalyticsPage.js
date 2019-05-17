@@ -51,7 +51,7 @@ componentDidMount() {
   window.addEventListener('resize', this.renderGraphs);
   const {getAccessToken} = auth;
   const headers = {Authorization : `Bearer ${getAccessToken()}`}
-   axios.get('http://localhost:5000/schools/houses/data', {headers})
+   axios.get('https://labspt2-housecup.herokuapp.com/schools/houses/data', {headers})
         .then( response => {
           console.log(response.data);
         })

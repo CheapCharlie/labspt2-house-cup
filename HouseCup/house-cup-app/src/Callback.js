@@ -20,7 +20,7 @@ class Callback extends Component {
       const { getAccessToken } = auth;
       const headers = { Authorization: `Bearer ${getAccessToken()}` };
       console.log(`Callback.js line 22`, headers);
-      axios.post('http://localhost:5000/users/register', {}, {headers})
+      axios.post('https://labspt2-housecup.herokuapp.com/users/register', {}, {headers})
           .then( user => {
               console.log(user, 'User creation success');
           }).catch(err => {
