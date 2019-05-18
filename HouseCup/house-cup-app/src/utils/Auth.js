@@ -7,7 +7,7 @@ class Auth {
       this.auth0 = new auth0.WebAuth({
         domain: 'venky-yagatilee.auth0.com',
         clientID: '46Ngw5RelPCvdaCoKrqPvIWyvgFQBqvx',
-        redirectUri: 'http://localhost:3000/callback',
+        redirectUri: 'https://labspt2-housecup.herokuapp.com/',
         audience: 'https://labspt2-housecup.herokuapp.com/',
         responseType: 'token id_token',
         scope: 'openid profile'
