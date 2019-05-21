@@ -9,7 +9,7 @@ const jwtCheck = jwt({
       jwksUri: 'https://venky-yagatilee.auth0.com/.well-known/jwks.json'
    }),
 
-    audience: 'https://labspt2-housecup.herokuapp.com/',
+    audience: 'https://labspt2-housecup.herokuapp.com/callback',
     issuer: 'https://venky-yagatilee.auth0.com/',
     algorithms: ['RS256']
 

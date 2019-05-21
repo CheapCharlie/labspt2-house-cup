@@ -59,14 +59,23 @@ server.use(helmet());
 server.use(logger('tiny'));
 server.use(cors());
 
+// server.use('/api/users', userRouter);
+// server.use('/api/schools', schoolsRouter);
+// // Get the id from req.params -- > houses.js
+// server.use('/api/', housesRouter);
+
+// server.use(express.static(__dirname + '/HouseCup/house-cup-app/build'))
+
+// server.get('/', (req, res) => {
+//   res.send(`Server is up and running now.`);
+// });
+
 server.use('/users', userRouter);
 server.use('/schools', schoolsRouter);
 // Get the id from req.params -- > houses.js
+server.use(express.static(__dirname + '/HouseCup/house-cup-app/build'))
 server.use('/', housesRouter);
 
-server.get('/', (req, res) => {
-  res.send(`Server is up and running now.`);
-});
 
 server.use(errorHandler);
 
