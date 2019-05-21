@@ -4,7 +4,7 @@ import Graph from '../Styles/Graphs.js';
 import SideMenu from '../SideMenu.js';
 import Select from 'react-select';
 import auth from '../../utils/Auth.js';
-import dummyData from './dummy.js';
+import DummyData from './Dummy.js';
 import axios from 'axios';
 
 const options = [
@@ -17,7 +17,7 @@ export default class AdminAnalyticsPage extends Component {
   constructor(props) {
     super(props);
      this.state = {
-        graphData: dummyData,
+        graphData: DummyData,
         selectedOption: null,
         data: null     
                     

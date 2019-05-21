@@ -1,4 +1,4 @@
- const dummyData = {
+ const DummyData = {
   years:[
    { label: "2015", value: 0 },
    { label: "2016", value: 1 },
@@ -101,5 +101,5 @@ options:{
  }
 }
 
-export default dummyData;
+export default DummyData;
 
