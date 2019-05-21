@@ -2,12 +2,12 @@ import React, { Component } from 'react';
 import './App.css';
 import axios from 'axios';
 import { Route } from 'react-router-dom';
-//landingPage imports:
-import LandingPage from './sub-components/LandingPage'
 //test data:
 import scoreboardTestData from './mock data/scoreboard';
 //Admin import(s):
 import Houses from './sub-components/HousesPage';
+//landingPage imports:
+import LandingPage from './sub-components/LandingPage'
 //Settings import(s):
 import SettingsPage from './sub-components/SettingsPage';
 //SignupPage import
