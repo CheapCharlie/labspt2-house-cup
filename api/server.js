@@ -73,9 +73,9 @@ server.use(cors());
 server.use('/users', userRouter);
 server.use('/schools', schoolsRouter);
 // Get the id from req.params -- > houses.js
-server.use(express.static(__dirname + '/HouseCup/house-cup-app/build'))
 server.use('/', housesRouter);
 
+server.use(express.static('./HouseCup/house-cup-app/build'))
 
 server.use(errorHandler);
 

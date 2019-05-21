@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
     "server": "nodemon index.js",
-    "start": "node index.js"
+    "start": "cd ./HouseCup/house-cup-app && npm install && npm run build && cd ../.. && node index.js"
   },
   "repository": "https://github.com/vy3191/labspt2-house-cup.git",
   "author": "vy3191 <venkyafhs@gmail.com>",
